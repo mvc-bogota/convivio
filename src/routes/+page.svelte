@@ -1,10 +1,10 @@
 <script>
-    let counter = 0;
+    export let data;
 </script>
 
 <h1>Haz tu ofrecimiento por convivio</h1>
-<p>{counter}</p>
+<p>{data.currentPrayers}</p>
 
-<button on:click={() => counter += 1}>
-    Suma una oración
-</button>
+<form method="POST">
+    <button>Haz tu ofrecimiento</button>
+</form>
