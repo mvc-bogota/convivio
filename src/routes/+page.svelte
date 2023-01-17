@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    let counter = 0;
+</script>
+
+<h1>Haz tu ofrecimiento por convivio</h1>
+<p>{counter}</p>
+
+<button on:click={() => counter += 1}>
+    Suma una oración
+</button>
