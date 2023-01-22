@@ -1,7 +1,7 @@
 <script>
     export let marbles = 0;
 
-    let colors = ['#f44336', '#9c27b0', '#3f51b5', '#03a9f4', '#4caf50', '#ffc107'];
+    let colors = ['#1855B3', '#506481', '#67DAE5', '#03a9f4', '#EC8C6C', '#B42C2C'];
     function getRandomColor() {
         return colors[Math.floor(Math.random() * colors.length)];
     }
