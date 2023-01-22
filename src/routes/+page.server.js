@@ -6,7 +6,7 @@ const db = {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(this.prayers);
-            }, 1000);
+            }, 100);
         });
     },
 };
