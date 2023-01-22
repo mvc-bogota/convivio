@@ -1,15 +1,8 @@
-<script>
-    export let data;
-
-    import { enhance } from '$app/forms';
-    import MarbleJar from './MarbleJar.svelte';
-</script>
-
-<h1>Haz tu ofrecimiento por convivio</h1>
-<p>{data.currentPrayers}</p>
-
-<form method="POST" use:enhance>
-    <button>Haz tu ofrecimiento</button>
-</form>
-
-<MarbleJar marbles={data.currentPrayers} />
+<h1>Convivio Bogotá 2023</h1>
+<p>
+    Esta es la página principal de convivio 2023. A continuación, podrá encontrar links para algunas
+    de los servicios que hemos preparado:
+</p>
+<ul>
+    <li><a href="/prayers">Reza por convivio</a></li>
+</ul>
