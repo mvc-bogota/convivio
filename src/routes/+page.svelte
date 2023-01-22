@@ -1,7 +1,6 @@
 <script>
     export let data;
 
-    import '$lib/assets/global.css';
     import { enhance } from '$app/forms';
     import MarbleJar from './MarbleJar.svelte';
 </script>
