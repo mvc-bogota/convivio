@@ -32,6 +32,7 @@
         flex-direction: column-reverse;
         outline: 1px solid #000;
         border-radius: 1em;
+        box-shadow: 0 0 10px #000;
     }
 
     .marble-container {
