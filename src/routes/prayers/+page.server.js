@@ -1,26 +1,17 @@
-// Mock database object
-// Change this to a real connection once we have a database
-const db = {
-    prayers: 0,
-    getPrayers: function () {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(this.prayers);
-            }, 100);
-        });
-    },
-};
+import { Prayer, PrayerDao } from '$lib/prayers';
+import db from '$lib/prayers/db';
 
 async function load() {
-    // Simulate a database call
     return {
-        currentPrayers: await db.getPrayers(),
+        prayers: await new PrayerDao(db).getAllPrayers(),
     };
 }
 
 const actions = {
-    default: async () => {
-        db.prayers++;
+    default: async ({ request }) => {
+        const data = await request.formData();
+        const prayer = new Prayer(data.get('prayerType'));
+        prayer.save(new PrayerDao(db));
     },
 };
 
