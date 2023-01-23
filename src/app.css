@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+h1 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: 'Arimo', sans-serif;
+}
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
