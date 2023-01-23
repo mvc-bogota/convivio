@@ -10,7 +10,7 @@
  * Each jar can contain only 150 marbles so once the jar is full we must display it as full
  * in the background and display a new jar with the new prayers.
  *
- * Convivos color palette:
+ * Convivio's color palette:
  *  colors = ['#1855B3', '#506481', '#67DAE5', '#03a9f4', '#EC8C6C', '#B42C2C'];
  */
 
