@@ -7,7 +7,7 @@
         <div class="jar">
             <div class="marble-container">
                 {#each jar.prayers as prayer}
-                    <div class="marble" style="background-color: {prayer.getColor()};" />
+                    <div class="marble" style="background: radial-gradient(circle at 20% 20%, {prayer.getColor()}, #000);" />
                 {/each}
             </div>
         </div>
@@ -30,8 +30,8 @@
         background-color: #fff;
         display: flex;
         flex-direction: column-reverse;
-        outline: 1px solid #000;
-        border-radius: 1em;
+        outline: 1px ridge rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 1em 1em;
         box-shadow: 0 0 10px #000;
     }
 
@@ -42,8 +42,9 @@
     }
 
     .marble {
+        --marble-height: calc(var(--jar-height) / 15);
         flex-basis: calc(var(--jar-width) / 10);
-        height: calc(var(--jar-height) / 15);
+        height: var(--marble-height);
         border-radius: 50%;
     }
 </style>
