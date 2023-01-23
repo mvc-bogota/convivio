@@ -6,7 +6,7 @@
     import { prayerTypes } from '$lib/prayers';
 </script>
 
-<h1>Haz tu ofrecimiento por convivio</h1>
+<h1>Haz tu ofrecimiento por Convivio</h1>
 <p>Hasta el momento llevamos:</p>
 <ul>
     {#each Object.entries(prayerTypes) as [type, { label }]}

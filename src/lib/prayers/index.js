@@ -26,11 +26,11 @@ const prayerTypes = {
         color: '#67DAE5',
     },
     adoration: {
-        label: 'Adoración',
+        label: 'Adoración al santísimo',
         color: '#EC8C6C',
     },
     sacrifice: {
-        label: 'Sacrificio',
+        label: 'Sacrificio de algo que te cuesta',
         color: '#506481',
     },
     others: {
