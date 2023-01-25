@@ -31,7 +31,45 @@
 </div>
 
 <style>
-    .offerings-container {
+    h1 {
+        color: white;
+        margin: 5px;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    #header-container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #00558F;
+        color: white;
+        width: 100%;
+    }
+
+    #banner-image {
+        width: 100%;
+        height: 200px;
+        background-image: url(/bannerimage.JPG);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    #prayer-count-container {
+        margin: 30px 0;
+        padding: 0 15px 0 0;
+        border-radius: 30px 30px 0px 30px;
+        outline: 8px ridge #00558F;
+        box-shadow: 10px 10px 5px lightblue;
+    }
+
+    #offerings-container {
         display: flex;
         flex-direction: column;
         align-items: center;
