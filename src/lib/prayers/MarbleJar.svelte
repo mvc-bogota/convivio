@@ -28,7 +28,7 @@
         --jar-height: 30em;
         width: var(--jar-width);
         height: var(--jar-height);
-        background-color: #fff;
+        background-color: aliceblue;
         display: flex;
         flex-direction: column-reverse;
         outline: 1px ridge rgba(0, 0, 0, 0.3);
