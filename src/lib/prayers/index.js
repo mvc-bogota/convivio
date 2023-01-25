@@ -14,8 +14,6 @@
  *  colors = ['#1855B3', '#506481', '#67DAE5', '#03a9f4', '#EC8C6C', '#B42C2C'];
  */
 
-import { v4 as uuidv4 } from 'uuid';
-
 const prayerTypes = {
     mass: {
         label: 'Misa',
@@ -110,22 +108,21 @@ class PrayerTracker {
 class PrayerDao {
     constructor(database) {
         this.database = database;
-        this.tableName = 'prayers';
+        this.tableName = 'Prayers';
     }
 
     async getAllPrayers() {
-        const result = await this.database.scan({
-            TableName: this.tableName,
+        const result = await this.database.getAll({
+            tableName: this.tableName,
         });
-        return result.Items;
+        return result;
     }
 
     async addPrayer(prayer) {
         await this.database.put({
-            TableName: this.tableName,
-            Item: {
+            tableName: this.tableName,
+            data: {
                 ...prayer,
-                prayerId: uuidv4(),
                 datetime: new Date().toISOString(),
             },
         });

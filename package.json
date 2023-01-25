@@ -23,7 +23,6 @@
     },
     "type": "module",
     "dependencies": {
-        "faunadb": "^4.7.1",
-        "uuid": "^9.0.0"
+        "faunadb": "^4.7.1"
     }
 }
