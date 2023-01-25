@@ -20,6 +20,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.5em;
+        padding: 30px;
     }
 
     .jar {
