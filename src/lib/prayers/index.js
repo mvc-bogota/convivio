@@ -50,8 +50,8 @@ class Prayer {
         return prayerTypes[this.type].color;
     }
 
-    save(prayerDao) {
-        return prayerDao.addPrayer(this);
+    async save(prayerDao) {
+        return await prayerDao.addPrayer(this);
     }
 }
 

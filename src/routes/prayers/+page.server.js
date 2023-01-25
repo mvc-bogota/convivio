@@ -11,7 +11,7 @@ const actions = {
     default: async ({ request }) => {
         const data = await request.formData();
         const prayer = new Prayer(data.get('prayerType'));
-        prayer.save(new PrayerDao(db));
+        await prayer.save(new PrayerDao(db));
     },
 };
 
