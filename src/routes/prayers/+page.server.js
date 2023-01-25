@@ -1,5 +1,5 @@
 import { Prayer, PrayerDao } from '$lib/prayers';
-import db from '$lib/prayers/db';
+import db from '$lib/prayers/db.server.js';
 
 async function load() {
     return {
