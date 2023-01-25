@@ -19,3 +19,16 @@
 
     <MarbleJar prayerTracker={data.prayerTracker} />
 </div>
+
+<style>
+    .offerings-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    li {
+        font-weight: 700;
+    }
+</style>
