@@ -6,14 +6,16 @@
     import { prayerTypes } from '$lib/prayers';
 </script>
 
-<h1>Haz tu ofrecimiento por Convivio</h1>
-<p>Hasta el momento llevamos:</p>
-<ul>
-    {#each Object.entries(prayerTypes) as [type, { label }]}
-        <li><strong>{label}</strong>: {data.prayerTracker.getPrayersCountByType(type)}</li>
-    {/each}
-</ul>
+<div class="offerings-container">
+    <h1>Haz tu ofrecimiento por Convivio</h1>
+    <p>Hasta el momento llevamos:</p>
+    <ul>
+        {#each Object.entries(prayerTypes) as [type, { color, label }]}
+            <li style="color: {color};">{label}: <strong>{data.prayerTracker.getPrayersCountByType(type)}</strong></li>
+        {/each}
+    </ul>
 
-<PrayerForm />
+    <PrayerForm />
 
-<MarbleJar prayerTracker={data.prayerTracker} />
+    <MarbleJar prayerTracker={data.prayerTracker} />
+</div>
