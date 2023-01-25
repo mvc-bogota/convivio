@@ -29,11 +29,11 @@ const prayerTypes = {
     },
     sacrifice: {
         label: 'Sacrificio de algo que te cuesta',
-        color: '#506481',
+        color: '#B42C2C',
     },
     others: {
         label: 'Otros',
-        color: '#B42C2C',
+        color: '#506481',
     },
 };
 
