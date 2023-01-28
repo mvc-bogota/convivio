@@ -12,13 +12,15 @@
         <p>Por cada ofrecimiento que registres, se agrega una bolita al jarrón</p>
         <p>Cuando un jarrón se llena, se agrega un nuevo jarrón</p>
     </div>
-    <div id="banner-image"></div>
+    <div id="banner-image" />
 
     <div id="prayer-count-container">
         <p><strong>Hasta el momento llevamos:</strong></p>
         <ul>
             {#each Object.entries(prayerTypes) as [type, { color, label }]}
-                <li style="color: {color};">{label}: <strong>{data.prayerTracker.getPrayersCountByType(type)}</strong></li>
+                <li style="color: {color};">
+                    {label}: <strong>{data.prayerTracker.getPrayersCountByType(type)}</strong>
+                </li>
             {/each}
         </ul>
     </div>
@@ -46,7 +48,7 @@
     #header-container {
         padding-top: 10px;
         padding-bottom: 10px;
-        background-color: #00558F;
+        background-color: #00558f;
         color: white;
         width: 100%;
     }
@@ -54,7 +56,7 @@
     #banner-image {
         width: 100%;
         height: 200px;
-        background-image: url(/bannerimage.JPG);
+        background-image: url($lib/assets/prayer-banner.jpg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -65,7 +67,7 @@
         margin: 30px 0;
         padding: 0 15px 0 0;
         border-radius: 30px 30px 0px 30px;
-        outline: 8px ridge #00558F;
+        outline: 8px ridge #00558f;
         box-shadow: 10px 10px 5px lightblue;
     }
 
