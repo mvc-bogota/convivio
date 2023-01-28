@@ -6,15 +6,19 @@
     import { prayerTypes } from '$lib/prayers';
 </script>
 
-<div id="offerings-container">
-    <div id="header-container">
+<header>
+    <div class="wrapper">
         <h1>¡Haz tu ofrecimiento por Convivio!</h1>
-        <p>Por cada ofrecimiento que registres, se agrega una bolita al jarrón</p>
-        <p>Cuando un jarrón se llena, se agrega un nuevo jarrón</p>
+        <p>
+            Ofrece alguna oración por convivio y registralo acá. Agregaremos una bolita al jarrón
+            por cada oración. ¿Cuántos jarrones podremos llenar?
+        </p>
     </div>
-    <div id="banner-image" />
+    <div class="banner" />
+</header>
 
-    <div id="prayer-count-container">
+<main class="flow">
+    <div class="prayer-counter">
         <p><strong>Hasta el momento llevamos:</strong></p>
         <ul>
             {#each Object.entries(prayerTypes) as [type, { color, label }]}
@@ -27,58 +31,58 @@
 
     <PrayerForm />
 
-    <h2>Jarrones:</h2>
-
-    <MarbleJar prayerTracker={data.prayerTracker} />
-</div>
+    <div class="jars flow">
+        <h2>Jarrones:</h2>
+        <MarbleJar prayerTracker={data.prayerTracker} />
+    </div>
+</main>
 
 <style>
+    header {
+        background-color: var(--color-primary);
+        color: var(--color-neutral-light);
+        text-align: center;
+    }
+
+    header .wrapper {
+        padding: var(--s-400);
+        max-width: 65ch;
+        margin: 0 auto;
+    }
+
     h1 {
-        color: white;
-        margin: 5px;
-        text-align: center;
+        color: var(--color-neutral-light);
     }
 
-    p {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        text-align: center;
-    }
-
-    #header-container {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: #00558f;
-        color: white;
-        width: 100%;
-    }
-
-    #banner-image {
-        width: 100%;
+    .banner {
         height: 200px;
         background-image: url($lib/assets/prayer-banner.jpg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        position: relative;
-    }
-
-    #prayer-count-container {
-        margin: 30px 0;
-        padding: 0 15px 0 0;
-        border-radius: 30px 30px 0px 30px;
-        outline: 8px ridge #00558f;
-        box-shadow: 10px 10px 5px lightblue;
-    }
-
-    #offerings-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
     }
 
     li {
         font-weight: 700;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: var(--s-600);
+    }
+
+    .prayer-counter {
+        padding: var(--s-400);
+        border-radius: var(--s-700) var(--s-700) 0px var(--s-700);
+        outline: 8px ridge #00558f;
+        box-shadow: 10px 10px 5px lightblue;
+    }
+
+    .jars {
+        --flow-space: var(--s-300);
+        text-align: center;
     }
 </style>

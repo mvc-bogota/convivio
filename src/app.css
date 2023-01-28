@@ -1,15 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
 
+:root {
+    --color-primary: #1855b3;
+    --color-secondary: #506481;
+    --color-tertiary: #67dae5;
+    --color-quaternary: #ec8c6c;
+    --color-quinary: #B42c2c2;
+    --color-neutral-light: #fff;
+    --color-neutral-dark: #000;
+
+    --ff-primary: 'Nunito Sans', sans-serif;
+    --ff-secondary: 'Arimo', sans-serif;
+
+    --base-size: 1rem;
+    --ratio: 1.25;
+
+    --s-100: calc(var(--s-200) / var(--ratio));
+    --s-200: calc(var(--s-300) / var(--ratio));
+    --s-300: calc(var(--s-400) / var(--ratio));
+    --s-400: var(--base-size);
+    --s-500: calc(var(--s-400) * var(--ratio));
+    --s-600: calc(var(--s-500) * var(--ratio));
+    --s-700: calc(var(--s-600) * var(--ratio));
+    --s-800: calc(var(--s-700) * var(--ratio));
+    --s-900: calc(var(--s-800) * var(--ratio));
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--ff-primary);
+}
+
 h1 {
-    font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
 }
 
 h2 {
-    font-family: 'Arimo', sans-serif;
+    font-family: var(--ff-secondary);
 }
 
-* {
-    font-family: 'Nunito Sans', sans-serif;
+.flow > * + * {
+    margin-top: var(--flow-space, var(--s-400));
 }

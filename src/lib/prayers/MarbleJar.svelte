@@ -7,7 +7,10 @@
         <div class="jar">
             <div class="marble-container">
                 {#each jar.prayers as prayer}
-                    <div class="marble" style="background: radial-gradient(circle at 20% 20%, {prayer.getColor()}, #000);" />
+                    <div
+                        class="marble"
+                        style="background: radial-gradient(circle at 20% 20%, {prayer.getColor()}, #000);"
+                    />
                 {/each}
             </div>
         </div>
@@ -24,8 +27,8 @@
     }
 
     .jar {
-        --jar-width: 20em;
-        --jar-height: 30em;
+        --jar-width: clamp(15em, 20vw, 20em);
+        --jar-height: calc(var(--jar-width) * 1.5);
         width: var(--jar-width);
         height: var(--jar-height);
         background-color: aliceblue;
