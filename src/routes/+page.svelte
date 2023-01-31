@@ -5,4 +5,5 @@
 </p>
 <ul>
     <li><a href="/prayers">Reza por Convivio</a></li>
+    <li><a href="/concert-tickets">Comprar entradas al concierto</a></li>
 </ul>
