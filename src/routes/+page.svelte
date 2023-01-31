@@ -1,8 +1,8 @@
 <h1>Convivio Bogotá 2023</h1>
 <p>
-    Esta es la página principal de convivio 2023. A continuación, podrá encontrar links para algunas
+    Esta es la página principal de Convivio 2023. A continuación, podrá encontrar links para algunas
     de los servicios que hemos preparado:
 </p>
 <ul>
-    <li><a href="/prayers">Reza por convivio</a></li>
+    <li><a href="/prayers">Reza por Convivio</a></li>
 </ul>
