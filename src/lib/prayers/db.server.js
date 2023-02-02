@@ -17,7 +17,7 @@ class Database {
     async getAll({ tableName }) {
         const result = await this.client.query(
             q.Map(
-                q.Paginate(q.Documents(q.Collection(tableName))),
+                q.Paginate(q.Documents(q.Collection(tableName)), { size: 1000 }),
                 q.Lambda((x) => q.Get(x))
             )
         );
