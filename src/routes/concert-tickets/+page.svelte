@@ -1,7 +1,9 @@
 <script>
-    import { PUBLIC_WOMPI_COMMERCE_KEY } from '$env/static/public';
+    import { PUBLIC_WOMPI_COMMERCE_KEY, PUBLIC_BASE_URL } from '$env/static/public';
     import { v4 as uuidv4 } from 'uuid';
     import { ticketsOptions } from '$lib/concert-tickets';
+
+    const redirectUrl = `${PUBLIC_BASE_URL}/concert-tickets/result`;
 
     let colombiaNumberFormat = new Intl.NumberFormat('es-CO', {
         style: 'currency',
@@ -34,8 +36,8 @@
     <!--
     TO DO
     <input type="hidden" name="signature:integrity" value={}/>
-    <input type="hidden" name="redirect-url" value="URL_REDIRECCION" />
   -->
+    <input type="hidden" name="redirect-url" value={redirectUrl} />
     <input type="hidden" name="customer-data:email" value="" />
     <input type="hidden" name="customer-data:full-name" value="" />
     <input type="hidden" name="customer-data:phone-number" value="" />
