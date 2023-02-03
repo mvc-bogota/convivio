@@ -1,9 +1,5 @@
 <script>
-    import { PUBLIC_WOMPI_COMMERCE_KEY, PUBLIC_BASE_URL } from '$env/static/public';
-    import { v4 as uuidv4 } from 'uuid';
-    import { ticketsOptions } from '$lib/concert-tickets';
-
-    const redirectUrl = `${PUBLIC_BASE_URL}/concert-tickets/result`;
+    import { concertEvent, legalIdTypes } from '$lib/concert-tickets';
 
     let colombiaNumberFormat = new Intl.NumberFormat('es-CO', {
         style: 'currency',
@@ -11,35 +7,42 @@
         currencyDisplay: 'code',
         minimumFractionDigits: 0,
     });
-    let currentPriceInCents;
-    let currentPaymentReference = uuidv4();
-    let currency = 'COP';
 </script>
 
-<form action="https://checkout.wompi.co/p/" method="GET">
-    <select bind:value={currentPriceInCents} name="ticketQuantity" id="ticketQuantity" required>
+<h1>Compra tu boleta para el concierto convivio</h1>
+
+<form method="POST">
+    <label for="full-name">Nombre Completo</label>
+    <input type="text" id="full-name" name="fullName" value="" required />
+
+    <label for="email">Correo</label>
+    <input type="email" id="email" name="email" value="" required />
+
+    <label for="phone"> Teléfono</label>
+    <input type="tel" id="phone" name="phoneNumber" value="" />
+
+    <label for="legal-id-type">Tipo de documento de identidad</label>
+    <select name="legalIdType" id="legal-id-type" required>
+        <option value="" selected>Selecciona el tipo de documento</option>
+        {#each Object.entries(legalIdTypes) as [legalIdTypeKey, legalIdTypeValue]}
+            <option value={legalIdTypeKey}>{legalIdTypeValue}</option>
+        {/each}
+    </select>
+
+    <label for="legal-id-number">Número de documento</label>
+    <input type="text" id="legal-id-number" name="legalIdNumber" />
+
+    <label for="ticket-quantity">¿Cuántas boletas quieres?</label>
+    <select name="ticketQuantity" id="ticket-quantity" required>
         <option value="" selected>Selecciona la cantidad de boletas</option>
-        {#each Object.entries(ticketsOptions) as [ticketOptionName, ticketOptionObject]}
-            <option value={ticketOptionObject.price() * 100}
-                >{ticketOptionObject.quantity} ({colombiaNumberFormat.format(
-                    ticketOptionObject.price()
+        {#each Array(5) as _, index}
+            <option value={index + 1}
+                >{index + 1} ({colombiaNumberFormat.format(
+                    concertEvent.calculatePriceInCents(index + 1) / 100
                 )})</option
             >
         {/each}
     </select>
 
-    <input type="hidden" name="public-key" value={PUBLIC_WOMPI_COMMERCE_KEY} />
-    <input type="hidden" name="currency" value={currency} />
-    <input type="hidden" name="amount-in-cents" value={currentPriceInCents} />
-    <input type="hidden" name="reference" value={currentPaymentReference} />
-
-    <!--
-    TO DO
-    <input type="hidden" name="signature:integrity" value={}/>
-  -->
-    <input type="hidden" name="redirect-url" value={redirectUrl} />
-    <input type="hidden" name="customer-data:email" value="" />
-    <input type="hidden" name="customer-data:full-name" value="" />
-    <input type="hidden" name="customer-data:phone-number" value="" />
     <button type="submit">Pagar con Wompi</button>
 </form>
