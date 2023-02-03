@@ -10,8 +10,17 @@ class Database {
         });
     }
 
+    async get({ tableName, ref }) {
+        const result = await this.client.query(q.Get(q.Ref(q.Collection(tableName), ref)));
+        return result.data;
+    }
+
     async put({ tableName, data }) {
         return this.client.query(q.Create(q.Collection(tableName), { data }));
+    }
+
+    async update({ tableName, ref, data }) {
+        return this.client.query(q.Update(q.Ref(q.Collection(tableName), ref), { data }));
     }
 
     async getAll({ tableName }) {
