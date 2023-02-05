@@ -31,7 +31,7 @@ const actions = {
             legalIdType,
             legalIdNumber,
             integrityKey: WOMPI_INTEGRITY_KEY,
-            redirectURL: `${PUBLIC_BASE_URL}/concert-tickets/payment-success`,
+            redirectURL: `${PUBLIC_BASE_URL}/concert-tickets/payment-finished`,
         });
 
         throw redirect(303, paymentURL);
