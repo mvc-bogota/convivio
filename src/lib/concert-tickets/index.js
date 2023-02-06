@@ -55,12 +55,12 @@ class TicketPurchase {
         return result;
     }
 
-    async addPayment(payment, ticketPurchaseDao) {
+    async addPayment(payment, paymentStatus, ticketPurchaseDao) {
         if (this.status !== 'pending') {
             throw new Error('Ticket purchase is not pending');
         }
         this.payment = payment;
-        this.status = 'paid';
+        this.status = paymentStatus;
         return await ticketPurchaseDao.updateTicketPurchase(this.ref, {
             payment,
             status: this.status,

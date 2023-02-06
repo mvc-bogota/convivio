@@ -1,10 +1,21 @@
-async function checksum({ ref, amount, currency, integrity_key }) {
-    const concat = ref + amount + currency + integrity_key;
+async function checksum(itemsToConcat) {
+    const concat = itemsToConcat.reduce((partialString, item) => `${partialString}${item}`, '');
     const encoded = new TextEncoder().encode(concat);
     const hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
     return hashHex;
+}
+
+async function validateEventAuthenticity(event, eventSecret) {
+    const { data, signature, timestamp } = event;
+    const checksumProperties = signature.properties.reduce((accumulator, property) => {
+        const parts = property.split('.');
+        const value = parts.reduce((value, part) => value[part], data);
+        return [...accumulator, value];
+    }, []);
+    const checksum = await checksum([...checksumProperties, timestamp, eventSecret]);
+    return checksum === signature.checksum;
 }
 
 async function getPaymentURL({
@@ -21,16 +32,16 @@ async function getPaymentURL({
     redirectURL = null,
 }) {
     const integrity = integrityKey
-        ? `&signature:integrity=${await checksum({
-              ref: reference,
-              amount: amountInCents,
+        ? `&signature:integrity=${await checksum([
+              reference,
+              amountInCents,
               currency,
-              integrity_key: integrityKey,
-          })}`
+              integrityKey,
+          ])}`
         : '';
     const redirect = redirectURL ? `&redirect-url=${redirectURL}` : '';
     const url = `https://checkout.wompi.co/p/?public-key=${publicKey}&amount-in-cents=${amountInCents}&reference=${reference}&currency=${currency}&customer-data:email=${email}&customer-data:phone-number=${phone}&customer-data:full-name=${name}&customer-data:legal-id-type=${legalIdType}&customer-data:legal-id=${legalIdNumber}${integrity}${redirect}`;
     return url;
 }
 
-export { getPaymentURL };
+export { getPaymentURL, validateEventAuthenticity };
