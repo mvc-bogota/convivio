@@ -6,6 +6,7 @@ import db from '$lib/server/db';
 
 async function POST({ request }) {
     const wompiEvent = await request.json();
+    console.info('WOMPI EVENT', wompiEvent);
     const isValid =
         (await validateEventAuthenticity(wompiEvent, WOMPI_EVENT_KEY)) &&
         wompiEvent.event === 'transaction.updated';
