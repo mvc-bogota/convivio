@@ -56,7 +56,7 @@ class TicketPurchase {
     }
 
     async addPayment(payment, paymentStatus, ticketPurchaseDao) {
-        if (this.status !== 'pending') {
+        if (this.status !== 'PENDING') {
             throw new Error('Ticket purchase is not pending');
         }
         this.payment = payment;
