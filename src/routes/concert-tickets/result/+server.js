@@ -15,6 +15,8 @@ async function POST({ request }) {
         throw error(403, 'Invalid event.');
     }
 
+    console.debug('WOMPI EVENT AFTER VALIDATION', wompiEvent);
+    console.debug('REF', wompiEvent.data.transaction.reference);
     const ticketPurchaseDao = new TicketPurchaseDAO(db);
     const ticketPurchase = await TicketPurchase.get(
         wompiEvent.data.transaction.reference,
