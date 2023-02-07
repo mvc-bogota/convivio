@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit';
 import { WOMPI_EVENT_KEY } from '$env/static/private';
 import { validateEventAuthenticity } from '$lib/concert-tickets/wompi';
 import { TicketPurchase, TicketPurchaseDAO } from '$lib/concert-tickets';
+import { sendConfirmationEmail } from '$lib/server/email-generation';
 import db from '$lib/server/db';
 
 async function POST({ request }) {
@@ -25,6 +26,14 @@ async function POST({ request }) {
         wompiEvent.data.transaction.status,
         ticketPurchaseDao
     );
+
+    await sendConfirmationEmail(
+        ticketPurchase.ref,
+        ticketPurchase.customer.email,
+        ticketPurchase.customer.name
+    );
+
+    ticketPurchase.updateStatus('EMAIL_SENT', ticketPurchaseDao);
 
     return new Response('OK');
 }

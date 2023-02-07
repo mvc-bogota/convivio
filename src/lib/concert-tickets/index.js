@@ -27,7 +27,7 @@ class TicketPurchase {
         legalIdType,
         legalIdNumber,
         payment = null,
-        status = 'pending',
+        status = 'PENDING',
     }) {
         this.status = status;
         this.quantity = parseInt(quantity, 10);
@@ -63,6 +63,13 @@ class TicketPurchase {
         this.status = paymentStatus;
         return await ticketPurchaseDao.updateTicketPurchase(this.ref, {
             payment,
+            status: this.status,
+        });
+    }
+
+    async updateStatus(status, ticketPurchaseDao) {
+        this.status = status;
+        return await ticketPurchaseDao.updateTicketPurchase(this.ref, {
             status: this.status,
         });
     }
