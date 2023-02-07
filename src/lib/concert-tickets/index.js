@@ -69,7 +69,7 @@ class TicketPurchase {
 
     static async get(ref, ticketPurchaseDao) {
         const result = await ticketPurchaseDao.getTicketPurchase(ref);
-        const ticketPurchase = new TicketPurchase(result);
+        const ticketPurchase = new TicketPurchase(result.data);
         ticketPurchase.ref = result.ref.id;
         return ticketPurchase;
     }

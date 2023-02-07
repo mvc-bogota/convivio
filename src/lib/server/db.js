@@ -12,7 +12,7 @@ class Database {
 
     async get({ tableName, ref }) {
         const result = await this.client.query(q.Get(q.Ref(q.Collection(tableName), ref)));
-        return result.data;
+        return result;
     }
 
     async put({ tableName, data }) {
