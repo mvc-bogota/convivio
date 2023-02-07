@@ -30,6 +30,6 @@ export const sendConfirmationEmail = function (databaseEntityId, recipientsEmail
 
     return client
         .send(message)
-        .then(() => console.log(`Mail sent succesfully to ${recipientsEmail}`))
+        .then(() => console.info(`Mail sent succesfully to ${recipientsEmail}`))
         .catch((err) => console.error(err));
 };

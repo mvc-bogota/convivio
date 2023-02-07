@@ -27,13 +27,13 @@ async function POST({ request }) {
         ticketPurchaseDao
     );
 
-    await sendConfirmationEmail(
+    sendConfirmationEmail(
         ticketPurchase.ref,
         ticketPurchase.customer.email,
         ticketPurchase.customer.name
-    );
-
-    ticketPurchase.updateStatus('EMAIL_SENT', ticketPurchaseDao);
+    ).then(() => {
+        ticketPurchase.updateStatus('EMAIL_SENT', ticketPurchaseDao);
+    });
 
     return new Response('OK');
 }
