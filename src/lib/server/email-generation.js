@@ -1,7 +1,6 @@
 import { SENDGRID_API_KEY } from '$env/static/private';
 import { generateQR } from './qr-generation';
-
-const client = require('@sendgrid/mail');
+import client from '@sendgrid/mail';
 
 const verifiedSenderEmail = 'noticiasmvcbog@gmail.com';
 const confirmationEmailTemplateId = 'd-b81cb950599f4e7aa9b003cbfe098b5b';
