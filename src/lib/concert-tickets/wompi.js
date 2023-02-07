@@ -14,8 +14,8 @@ async function validateEventAuthenticity(event, eventSecret) {
         const value = parts.reduce((value, part) => value[part], data);
         return [...accumulator, value];
     }, []);
-    const checksum = await checksum([...checksumProperties, timestamp, eventSecret]);
-    return checksum === signature.checksum;
+    const calculatedChecksum = await checksum([...checksumProperties, timestamp, eventSecret]);
+    return calculatedChecksum === signature.checksum;
 }
 
 async function getPaymentURL({
