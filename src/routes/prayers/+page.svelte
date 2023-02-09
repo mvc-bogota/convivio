@@ -55,7 +55,7 @@
     }
 
     h2 {
-        margin-top: 0px;
+        margin: 0px;
     }
 
     .banner {
