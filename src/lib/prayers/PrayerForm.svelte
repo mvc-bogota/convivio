@@ -15,3 +15,15 @@
         <button>Haz tu ofrecimiento</button>
     </div>
 </form>
+
+<style>
+    .wrapper {
+        padding: 20px 0px;
+        text-align: center;
+    }
+
+    label {
+        font-family: var(--ff-secondary);
+        font-weight: bold;
+    }
+</style>
