@@ -54,6 +54,10 @@
         color: var(--color-neutral-light);
     }
 
+    h2 {
+        margin-top: 0px;
+    }
+
     .banner {
         height: 200px;
         background-image: url($lib/assets/prayer-banner.jpg);
