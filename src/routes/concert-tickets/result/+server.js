@@ -21,6 +21,7 @@ async function POST({ request }) {
         wompiEvent.data.transaction.reference,
         ticketPurchaseDao
     );
+    console.info('TICKET PURCHASE', ticketPurchase);
     ticketPurchase.addPayment(
         wompiEvent.data.transaction,
         wompiEvent.data.transaction.status,
