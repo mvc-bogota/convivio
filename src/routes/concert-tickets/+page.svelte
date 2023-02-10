@@ -13,8 +13,8 @@
     <h1>¡Compra tus entradas para el Concierto Convivio!</h1>
 
     <div class="page-description">
-        <p>Cada entrada tiene un costo de $20.000 pesos</p>
-        <p>¡Si compras 5 entradas, te quedan al precio de 4!</p>
+        <p>Cada boleta tiene un costo de $20.000 pesos</p>
+        <p>¡Si compras 4, te regalamos una boleta extra!</p>
     </div>
 </div>
 
@@ -46,11 +46,22 @@
             <select name="ticketQuantity" id="ticket-quantity" required>
                 <option value="" selected>Selecciona la cantidad de boletas</option>
                 {#each Array(5) as _, index}
-                    <option value={index + 1}
-                        >{index + 1} ({colombiaNumberFormat.format(
-                            concertEvent.calculatePriceInCents(index + 1) / 100
-                        )})</option
-                    >
+                    {#if (index + 1) < 4}
+                        <option value={index + 1}>
+                            {index + 1} entrada(s) [{colombiaNumberFormat.format(
+                                concertEvent.calculatePriceInCents(index + 1) / 100
+                            )}]
+                        </option>
+                    {/if}
+
+                    {#if (index + 1) == 5}
+                        <option value={index + 1}>
+                            {index} ({index + 1}) entrada(s) [{colombiaNumberFormat.format(
+                                concertEvent.calculatePriceInCents(index + 1) / 100
+                            )}]
+                        </option>
+                    {/if}
+                    
                 {/each}
             </select>
         </div>
