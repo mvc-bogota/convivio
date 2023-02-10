@@ -16,11 +16,11 @@ class Database {
     }
 
     async put({ tableName, data }) {
-        return this.client.query(q.Create(q.Collection(tableName), { data }));
+        return await this.client.query(q.Create(q.Collection(tableName), { data }));
     }
 
     async update({ tableName, ref, data }) {
-        return this.client.query(q.Update(q.Ref(q.Collection(tableName), ref), { data }));
+        return await this.client.query(q.Update(q.Ref(q.Collection(tableName), ref), { data }));
     }
 
     async getAll({ tableName }) {
