@@ -93,7 +93,7 @@
     .form-container {
         display: flex;
         flex-direction: column;
-        background-color: #506481;
+        background-color: var(--color-secondary);
         padding: 20px 30px;
         color: white;
         border-radius: 10px;
