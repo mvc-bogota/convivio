@@ -30,13 +30,15 @@ async function POST({ request }) {
         ticketPurchaseDao
     );
 
-    sendConfirmationEmail(
-        ticketPurchase.ref,
-        ticketPurchase.customer.email,
-        ticketPurchase.customer.name
-    ).then(() => {
-        ticketPurchase.updateStatus('EMAIL_SENT', ticketPurchaseDao);
-    });
+    if (ticketPurchase.customer.email != undefined) {
+        sendConfirmationEmail(
+            ticketPurchase.ref,
+            ticketPurchase.customer.email,
+            ticketPurchase.customer.name
+        ).then(() => {
+            ticketPurchase.updateStatus('EMAIL_SENT', ticketPurchaseDao);
+        });
+    }
 
     return new Response('OK');
 }
