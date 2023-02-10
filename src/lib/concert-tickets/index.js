@@ -76,6 +76,7 @@ class TicketPurchase {
 
     static async get(ref, ticketPurchaseDao) {
         const result = await ticketPurchaseDao.getTicketPurchase(ref);
+        console.info('TEST', result.data)
         const ticketPurchase = new TicketPurchase(result.data);
         ticketPurchase.ref = result.ref.id;
         return ticketPurchase;
