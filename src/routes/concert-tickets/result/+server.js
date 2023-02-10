@@ -18,6 +18,7 @@ async function POST({ request }) {
 
     const ticketPurchaseDao = new TicketPurchaseDAO(db);
     const wompiTransactionReference = wompiEvent.data.transaction.reference
+    const wompiTransactionStatus = wompiEvent.data.transaction.status
     console.info('WOMPI TRANSACTION REFERENCE', wompiTransactionReference);
     const ticketPurchase = await TicketPurchase.get(
         wompiTransactionReference,
@@ -25,12 +26,12 @@ async function POST({ request }) {
     );
     await ticketPurchase.addPayment(
         wompiEvent.data.transaction,
-        wompiEvent.data.transaction.status,
+        wompiTransactionStatus,
         ticketPurchaseDao
     );
     console.info('TICKET PURCHASE', ticketPurchase);
 
-    if (ticketPurchase.customer.email != undefined) {
+    if (ticketPurchase.customer.email != undefined && wompiTransactionStatus == 'APPROVED') {
         await sendConfirmationEmail(
             ticketPurchase.ref,
             ticketPurchase.customer.email,
