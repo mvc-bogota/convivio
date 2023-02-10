@@ -26,7 +26,7 @@ class TicketPurchase {
         phone,
         legalIdType,
         legalIdNumber,
-        payment = null,
+        payment = undefined,
         status = 'PENDING'
     }) {
         this.status = status;
