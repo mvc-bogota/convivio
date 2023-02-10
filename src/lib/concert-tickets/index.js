@@ -27,7 +27,7 @@ class TicketPurchase {
         legalIdType,
         legalIdNumber,
         payment = null,
-        status = 'PENDING',
+        status = 'PENDING'
     }) {
         this.status = status;
         this.quantity = parseInt(quantity, 10);
@@ -76,8 +76,18 @@ class TicketPurchase {
 
     static async get(ref, ticketPurchaseDao) {
         const result = await ticketPurchaseDao.getTicketPurchase(ref);
-        console.info('TEST', result.data)
-        const ticketPurchase = new TicketPurchase(result.data);
+        const resultData = result.data
+        const ticketPurchaseData = {
+            quantity: resultData.quantity,
+            name: resultData.customer.name,
+            email: resultData.customer.email,
+            phone: resultData.customer.phone,
+            legalIdType: resultData.customer.legalIdType,
+            legalIdNumber: resultData.customer.legalIdNumber,
+            payment: resultData.payment,
+            status: resultData.status
+        }
+        const ticketPurchase = new TicketPurchase(ticketPurchaseData);
         ticketPurchase.ref = result.ref.id;
         return ticketPurchase;
     }
