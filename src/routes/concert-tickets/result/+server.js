@@ -23,15 +23,15 @@ async function POST({ request }) {
         wompiTransactionReference,
         ticketPurchaseDao
     );
-    console.info('TICKET PURCHASE', ticketPurchase);
-    ticketPurchase.addPayment(
+    await ticketPurchase.addPayment(
         wompiEvent.data.transaction,
         wompiEvent.data.transaction.status,
         ticketPurchaseDao
     );
+    console.info('TICKET PURCHASE', ticketPurchase);
 
     if (ticketPurchase.customer.email != undefined) {
-        sendConfirmationEmail(
+        await sendConfirmationEmail(
             ticketPurchase.ref,
             ticketPurchase.customer.email,
             ticketPurchase.customer.name
