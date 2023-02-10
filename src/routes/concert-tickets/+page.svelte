@@ -86,7 +86,7 @@
         padding: 20px 30px;
         color: white;
         border-radius: 10px;
-        margin: 0px 30px;
+        margin: 0px 15px;
     }
 
     .fields {
