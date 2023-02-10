@@ -17,8 +17,10 @@ async function POST({ request }) {
     }
 
     const ticketPurchaseDao = new TicketPurchaseDAO(db);
+    const wompiTransactionReference = wompiEvent.data.transaction.reference
+    console.info('WOMPI TRANSACTION REFERENCE', wompiTransactionReference);
     const ticketPurchase = await TicketPurchase.get(
-        wompiEvent.data.transaction.reference,
+        wompiTransactionReference,
         ticketPurchaseDao
     );
     console.info('TICKET PURCHASE', ticketPurchase);
