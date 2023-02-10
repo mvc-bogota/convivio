@@ -32,3 +32,10 @@
     </p>
 </div>
 
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
