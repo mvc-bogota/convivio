@@ -20,7 +20,7 @@
 
 
 <form method="POST">
-    <div class="wrapper">
+    <div class="form-container">
         <div class="fields">
             <label for="full-name">Nombre Completo</label>
             <input type="text" id="full-name" name="fullName" value="" required />
@@ -79,13 +79,14 @@
         margin: 0px;
     }
 
-    .wrapper {
+    .form-container {
         display: flex;
         flex-direction: column;
         background-color: #506481;
         padding: 20px 30px;
         color: white;
         border-radius: 10px;
+        margin: 0px 30px;
     }
 
     .fields {
