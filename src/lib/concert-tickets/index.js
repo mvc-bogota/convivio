@@ -121,6 +121,12 @@ class TicketPurchaseDAO {
         });
         return result;
     }
+
+    async updateStatusUsingGivenDocumentId(id, status) {
+        return await this.updateTicketPurchase(id, {
+            status: status,
+        });
+    }
 }
 
 export { concertEvent, legalIdTypes, TicketPurchase, TicketPurchaseDAO };
