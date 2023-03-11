@@ -30,7 +30,7 @@ class Database {
                 q.Lambda((x) => q.Get(x))
             )
         );
-        return result.data.map((item) => item.data);
+        return result.data;
     }
 }
 
