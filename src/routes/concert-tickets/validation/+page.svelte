@@ -9,16 +9,26 @@
         <td>{data.purchaseId}</td>
     </tr>
     <tr>
+        <th>Estado de la compra</th>
+        {#if data.purchaseStatus == "APPROVED"}
+            <td>APROBADA (No se envió correo)</td>
+        {:else if data.purchaseStatus == "EMAIL_SENT"}
+            <td>APROBADA Y CORREO ENVIADO</td>
+        {:else if data.purchaseStatus == "PENDING"}
+            <td>PENDIENTE</td>
+        {:else if data.purchaseStatus == "DECLINED"}
+            <td>DECLINADA</td>
+        {:else}
+            <td></td>
+        {/if}
+    </tr>
+    <tr>
         <th>Cantidad de boletas</th>
         <td>{data.ticketsQuantity}</td>
     </tr>
     <tr>
         <th>Nombre del comprador</th>
         <td>{data.customerName}</td>
-    </tr>
-    <tr>
-        <th>Correo registrado del comprador</th>
-        <td>{data.customerEmail}</td>
     </tr>
 </table>
 

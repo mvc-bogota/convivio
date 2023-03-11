@@ -10,8 +10,8 @@ async function load({ url }) {
     );
     return {
         purchaseId: ticketPurchase.ref,
+        purchaseStatus: ticketPurchase.status,
         ticketsQuantity: ticketPurchase.quantity,
-        customerEmail: ticketPurchase.customer.email,
         customerName: ticketPurchase.customer.name,
     };
 }
