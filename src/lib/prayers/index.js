@@ -115,7 +115,8 @@ class PrayerDao {
         const result = await this.database.getAll({
             tableName: this.tableName,
         });
-        return result;
+        const resultData = result.map((item) => item.data);
+        return resultData;
     }
 
     async addPrayer(prayer) {
