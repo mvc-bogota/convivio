@@ -114,6 +114,13 @@ class TicketPurchaseDAO {
     async getTicketPurchase(ref) {
         return await this.db.get({ tableName: this.tableName, ref });
     }
+
+    async getAllTicketPurchases() {
+        const result = await this.db.getAll({
+            tableName: this.tableName,
+        });
+        return result;
+    }
 }
 
 export { concertEvent, legalIdTypes, TicketPurchase, TicketPurchaseDAO };
