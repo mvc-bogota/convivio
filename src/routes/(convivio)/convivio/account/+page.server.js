@@ -1,4 +1,4 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export const load = (async ({ locals: { supabase, getSession } }) => {
 	const session = await getSession();
@@ -28,7 +28,7 @@ export const actions = {
 
 		const session = await getSession();
 
-		const { error } = await supabase.from('profiles').upsert({
+		const { error: profileError } = await supabase.from('profiles').upsert({
 			id: session?.user.id,
 			first_name: firstName,
 			last_name: lastName,
@@ -39,8 +39,8 @@ export const actions = {
 			updated_at: new Date()
 		});
 
-		if (error) {
-			return fail(500, {
+		if (profileError) {
+			return error(500, {
 				firstName,
 				lastName,
 				email,
