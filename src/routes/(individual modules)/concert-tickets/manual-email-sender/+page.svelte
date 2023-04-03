@@ -7,7 +7,11 @@
     <h1>Envía manualmente correos</h1>
 
     <div class="page-description">
-        <p>Si nunca te llegó el correo con el código QR o necesitas que te lo reenvien, este formulario revisa las compras que hiciste con tu documento de identidad y te envía los correos correspondientes</p>
+        <p>
+            Si nunca te llegó el correo con el código QR o necesitas que te lo reenvien, este
+            formulario revisa las compras que hiciste con tu documento de identidad y te envía los
+            correos correspondientes
+        </p>
     </div>
 </div>
 
@@ -26,13 +30,12 @@
 
             <label for="legal-id-number">
                 Número de documento
-                <input type="text" id="legal-id-number" name="legalIdNumber" required/>
+                <input type="text" id="legal-id-number" name="legalIdNumber" required />
             </label>
         </div>
 
         <button type="submit">ENVIAR CORREO CON CÓDIGO QR</button>
     </div>
-
 </form>
 
 <style>
@@ -72,7 +75,7 @@
         padding-bottom: 30px;
     }
 
-    label *{
+    label * {
         width: 100%;
     }
 </style>

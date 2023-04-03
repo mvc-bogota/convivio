@@ -10,16 +10,16 @@
     </tr>
     <tr>
         <th>Estado de la compra</th>
-        {#if data.purchaseStatus == "APPROVED"}
+        {#if data.purchaseStatus == 'APPROVED'}
             <td>APROBADA (No se envió correo)</td>
-        {:else if data.purchaseStatus == "EMAIL_SENT"}
+        {:else if data.purchaseStatus == 'EMAIL_SENT'}
             <td>APROBADA Y CORREO ENVIADO</td>
-        {:else if data.purchaseStatus == "PENDING"}
+        {:else if data.purchaseStatus == 'PENDING'}
             <td>PENDIENTE</td>
-        {:else if data.purchaseStatus == "DECLINED"}
+        {:else if data.purchaseStatus == 'DECLINED'}
             <td>DECLINADA</td>
         {:else}
-            <td></td>
+            <td />
         {/if}
     </tr>
     <tr>

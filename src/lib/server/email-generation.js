@@ -29,8 +29,7 @@ export const sendConfirmationEmail = async function (databaseEntityId, recipient
     };
 
     try {
-        await client
-            .send(message);
+        await client.send(message);
         return console.info(`Mail sent succesfully to ${recipientsEmail}`);
     } catch (err) {
         return console.error(err);

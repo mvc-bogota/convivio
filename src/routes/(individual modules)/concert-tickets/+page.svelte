@@ -18,7 +18,6 @@
     </div>
 </div>
 
-
 <form method="POST">
     <div class="form-container">
         <div class="fields">
@@ -46,7 +45,7 @@
             <select name="ticketQuantity" id="ticket-quantity" required>
                 <option value="" selected>Selecciona la cantidad de boletas</option>
                 {#each Array(5) as _, index}
-                    {#if (index + 1) < 4}
+                    {#if index + 1 < 4}
                         <option value={index + 1}>
                             {index + 1} entrada(s) [{colombiaNumberFormat.format(
                                 concertEvent.calculatePriceInCents(index + 1) / 100
@@ -54,14 +53,13 @@
                         </option>
                     {/if}
 
-                    {#if (index + 1) == 5}
+                    {#if index + 1 == 5}
                         <option value={index + 1}>
                             {index} ({index + 1}) entrada(s) [{colombiaNumberFormat.format(
                                 concertEvent.calculatePriceInCents(index + 1) / 100
                             )}]
                         </option>
                     {/if}
-                    
                 {/each}
             </select>
         </div>
@@ -105,5 +103,4 @@
         flex-direction: column;
         padding-bottom: 30px;
     }
-
 </style>
