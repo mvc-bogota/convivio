@@ -19,8 +19,9 @@
 
     function handleSubmit() {
         loading = true;
-        return async () => {
+        return async ({ update }) => {
             loading = false;
+            update();
         };
     }
 </script>
