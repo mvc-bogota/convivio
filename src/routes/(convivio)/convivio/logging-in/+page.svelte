@@ -9,7 +9,7 @@
 
         // check if user has been set in session store then redirect
         if (browser && data.session) {
-            goto(redirectTo ?? '/convivio/account');
+            goto(redirectTo ?? '/convivio');
         }
     }
 </script>
