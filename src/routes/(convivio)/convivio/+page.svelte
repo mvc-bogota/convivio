@@ -2,6 +2,7 @@
     import { enhance } from '$app/forms';
 
     export let data;
+    export let form;
     let { profile } = data;
 
     let loading = false;
@@ -28,12 +29,13 @@
 <p>
     Hola {profile.first_name}, ya casi terminas tu inscripción. Solo falta que llenes la siguiente
     información y pagues tu inscripción. Si tienes alguna duda, puedes escribirnos a
-    <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a>.
+    <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
+    <a href="https://wa.me/573222926960">322 292 6960</a>.
 </p>
 
 <div class="form-widget">
-    {#if profile.registration_filled}
-        <p>Poner aca la pasarela de pago</p>
+    {#if profile.registration_filled || form?.success}
+        <p><strong>TODO:</strong> Poner aca la pasarela de pago</p>
     {:else}
         <form class="flow" method="post" action="?/update" use:enhance={handleSubmit}>
             <div>
@@ -114,7 +116,8 @@
                         <option value="">---</option>
                         <option value="Unicentro">Unicentro</option>
                         <option value="Carulla Alhambra">Carulla Alhambra</option>
-                        <option value="Salitre">Salitre</option>
+                        <option value="Carulla de la 85">Carulla de la 85</option>
+                        <option value="Centro Chía">Centro Chía</option>
                     </select>
                 </div>
             {/if}
