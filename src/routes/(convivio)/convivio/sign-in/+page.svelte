@@ -64,4 +64,22 @@
     .text-center {
         text-align: center;
     }
+
+    .alert {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 1rem;
+        padding: 0.55rem 0.65rem 0.55rem 0.75rem;
+    }
+
+    .success {
+        background-color: rgba(62, 189, 97,0.2);
+        border: 2px solid #3ebd61;
+    }
+
+    .error {
+        background-color: rgba(236, 77, 43, 0.2);
+        border: 2px solid #EF9400;
+    }
 </style>
