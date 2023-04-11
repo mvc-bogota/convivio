@@ -48,7 +48,7 @@
                     {#if loading}
                         Cargando...
                     {:else}
-                        Enviar link con tú inscripción
+                        Enviar link con tu inscripción
                     {/if}
                 </button>
             </div>
