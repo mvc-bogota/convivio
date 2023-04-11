@@ -24,7 +24,7 @@
     }
 </script>
 
-<h1>Termina tu inscripción a convivio</h1>
+<h1>Termina tu inscripción a Convivio</h1>
 
 <div class="form-widget">
     {#if profile.registration_filled || form?.success}
