@@ -34,7 +34,14 @@
             <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
             <a href="https://wa.me/573222926960">322 292 6960</a>.
         </p>
-        <p><strong>TODO:</strong> Poner aca la pasarela de pago</p>
+        <form  method="POST" class= "flex flex-center" action="?/pay">
+            <input type="hidden" name="email" value="{profile.email}" />
+            <input type="hidden" name="fullName" value="{profile.first_name} {profile.last_name}" />
+            <input type="hidden" name="phoneNumber" value="{profile.phone_number}" />
+            <input type="hidden" name="legalIdNumber" value="{profile.id_number}" />
+            <input type="hidden" name="legalIdType" value="{profile.id_type}" />
+            <button type="submit" class="button primary"><strong>Pagar con Wompi</strong></button>
+          </form>
     {:else}
         <p>
             Hola {profile.first_name}, ya casi terminas tu inscripción. Solo falta que llenes la siguiente
