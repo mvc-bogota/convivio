@@ -26,17 +26,16 @@
 
 <h1>Termina tu inscripción a convivio</h1>
 
-<p>
-    Hola {profile.first_name}, ya casi terminas tu inscripción. Solo falta que llenes la siguiente
-    información y pagues tu inscripción. Si tienes alguna duda, puedes escribirnos a
-    <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
-    <a href="https://wa.me/573222926960">322 292 6960</a>.
-</p>
-
 <div class="form-widget">
     {#if profile.registration_filled || form?.success}
         <p><strong>TODO:</strong> Poner aca la pasarela de pago</p>
     {:else}
+        <p>
+            Hola {profile.first_name}, ya casi terminas tu inscripción. Solo falta que llenes la siguiente
+            información y pagues tu inscripción. Si tienes alguna duda, puedes escribirnos a
+            <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
+            <a href="https://wa.me/573222926960">322 292 6960</a>.
+        </p>
         <form class="flow" method="post" action="?/update" use:enhance={handleSubmit}>
             <div>
                 <label for="school">Nombre de tu institución educativa</label>
@@ -115,7 +114,7 @@
             {#if bus}
                 <div>
                     <label for="busStop">Parada de bus más cercana</label>
-                    <select name="busStop" id="busStop">
+                    <select name="busStop" id="busStop" required>
                         <option value="">---</option>
                         <option value="Unicentro">Unicentro</option>
                         <option value="Carulla Alhambra">Carulla Alhambra</option>
