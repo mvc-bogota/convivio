@@ -93,7 +93,9 @@
                     <input type="email" name="parentEmail" id="parentEmail" required />
                 </div>
                 <small>Descarga esta plantilla de permiso para menores de edad y luego de llenar los campos, adjunta el permiso a continuación:</small>
-                <a href="https://drive.google.com/file/d/1ZrN5K6Vi5lrM__5S2VSMZqiJlLuR6bBI/view">Permiso menores de edad Convivio</a>
+                <small><a href="https://drive.google.com/file/d/1ZrN5K6Vi5lrM__5S2VSMZqiJlLuR6bBI/view" target="_blank" rel="noreferrer noopener">
+                    Permiso menores de edad Convivio
+                </a></small>
                 <div>
                     <label for="authorization">Permiso firmado por el padre, madre o acudiente</label>
                     <input type="file" name="authorization" id="authorization" required />
