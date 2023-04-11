@@ -39,7 +39,7 @@
     {:else}
         <form class="flow" method="post" action="?/update" use:enhance={handleSubmit}>
             <div>
-                <label for="school">Institución Educativa</label>
+                <label for="school">Nombre de tu institución educativa</label>
                 <input type="text" name="school" id="school" required />
             </div>
             <div>
@@ -123,18 +123,20 @@
             {/if}
 
             <div>
-                <label for="eps">EPS</label>
+                <label for="eps">Entidad Prestadora de Salud (EPS)</label>
                 <input type="text" name="eps" id="eps" required />
             </div>
 
             <p>
-                Recuerda que si tienes alguna restricción alimentaria, es importante que lleves tu
-                propia comida a convivio.
+                <strong>
+                    Recuerda que si tienes alguna restricción alimentaria, es importante que lleves tu
+                    propia comida a convivio.
+                </strong>
             </p>
 
             <div>
                 <button type="submit" class="button block primary" disabled={loading}>
-                    {loading ? 'Cargando...' : 'Enviar'}
+                    {loading ? 'Cargando...' : 'Terminar Registro'}
                 </button>
             </div>
         </form>

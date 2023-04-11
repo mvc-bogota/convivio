@@ -13,7 +13,7 @@
     }
 </script>
 
-<h1>Inscripción a Convivio</h1>
+<h1>Pre-inscripción a Convivio</h1>
 
 {#if form?.success}
     <div class="alert success">
@@ -71,7 +71,7 @@
                     {#if loading}
                         Cargando...
                     {:else}
-                        Registrarme
+                        Terminar pre-inscripción
                     {/if}
                 </button>
             </div>
