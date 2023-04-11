@@ -41,7 +41,7 @@ async function getPaymentURL({
         : '';
     const redirect = redirectURL ? `&redirect-url=${redirectURL}` : '';
     const url = `https://checkout.wompi.co/p/?public-key=${publicKey}&amount-in-cents=${amountInCents}&reference=${reference}&currency=${currency}&customer-data:email=${email}&customer-data:phone-number=${phone}&customer-data:full-name=${name}&customer-data:legal-id-type=${legalIdType}&customer-data:legal-id=${legalIdNumber}${integrity}${redirect}`;
-    return url;
+    return encodeURI(url);
 }
 
 export { getPaymentURL, validateEventAuthenticity };
