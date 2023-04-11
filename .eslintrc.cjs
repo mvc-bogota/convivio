@@ -12,4 +12,8 @@ module.exports = {
         es2017: true,
         node: true,
     },
+    rules: {
+		semi: ['error', 'always'],
+		quotes: ['error', 'single']
+	}
 };
