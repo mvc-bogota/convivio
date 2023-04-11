@@ -71,7 +71,7 @@
                     {#if loading}
                         Cargando...
                     {:else}
-                        Actualizar Datos
+                        Registrarme
                     {/if}
                 </button>
             </div>

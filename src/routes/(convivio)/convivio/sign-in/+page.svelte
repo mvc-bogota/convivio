@@ -55,7 +55,7 @@
         </form>
 
         <div class="text-center">
-            <p>¿No has iniciado tu inscripción aún? <a href="/convivio/registro">Empieza acá</a></p>
+            <p>¿No has iniciado tu inscripción aún? <a href="/convivio/register">Empieza acá</a></p>
         </div>
     </div>
 {/if}

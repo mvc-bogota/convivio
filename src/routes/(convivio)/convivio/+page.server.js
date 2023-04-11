@@ -4,7 +4,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     const session = await getSession();
 
     if (!session) {
-        throw redirect(303, '/convivio/registro');
+        throw redirect(303, '/convivio/register');
     }
 
     const { data: profile } = await supabase
