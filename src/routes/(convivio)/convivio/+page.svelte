@@ -28,6 +28,12 @@
 
 <div class="form-widget">
     {#if profile.registration_filled || form?.success}
+        <p>
+            Hola {profile.first_name}, ya estás a un paso de terminar tu inscripción. Solo falta que pagues tu inscripción. 
+            Si tienes alguna duda, puedes escribirnos a
+            <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
+            <a href="https://wa.me/573222926960">322 292 6960</a>.
+        </p>
         <p><strong>TODO:</strong> Poner aca la pasarela de pago</p>
     {:else}
         <p>
