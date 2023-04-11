@@ -79,22 +79,23 @@
 
             {#if isUnderage}
                 <div>
-                    <label for="parentName">Nombre del padre o madre</label>
+                    <label for="parentName">Nombre de algún padre, madre o acudiente</label>
                     <input type="text" name="parentName" id="parentName" required />
                 </div>
 
                 <div>
-                    <label for="parentPhone">Teléfono del padre o madre</label>
+                    <label for="parentPhone">Teléfono del padre, madre o acudiente</label>
                     <input type="tel" name="parentPhone" id="parentPhone" required />
                 </div>
 
                 <div>
-                    <label for="parentEmail">Correo electrónico del padre o madre</label>
+                    <label for="parentEmail">Correo electrónico del padre, madre o acudiente</label>
                     <input type="email" name="parentEmail" id="parentEmail" required />
                 </div>
-
+                <small>Descarga esta plantilla de permiso para menores de edad y luego de llenar los campos, adjunta el permiso a continuación:</small>
+                <a href="https://drive.google.com/file/d/1ZrN5K6Vi5lrM__5S2VSMZqiJlLuR6bBI/view">Permiso menores de edad Convivio</a>
                 <div>
-                    <label for="authorization">Permiso firmado por el padre o la madre</label>
+                    <label for="authorization">Permiso firmado por el padre, madre o acudiente</label>
                     <input type="file" name="authorization" id="authorization" required />
                 </div>
             {/if}
