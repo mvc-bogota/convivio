@@ -1,4 +1,11 @@
 import { fail, redirect } from '@sveltejs/kit';
+import {v4 as uuidv4} from 'uuid';
+import { getPaymentURL } from '$lib/concert-tickets/wompi';
+import { WOMPI_INTEGRITY_KEY } from '$env/static/private';
+import { PUBLIC_WOMPI_COMMERCE_KEY, PUBLIC_BASE_URL } from '$env/static/public';
+
+const ticket_value = 200000;
+const ticket_value_in_cents = ticket_value * 100;
 
 export const load = async ({ locals: { supabase, getSession } }) => {
     const session = await getSession();
@@ -78,5 +85,44 @@ export const actions = {
             await supabase.auth.signOut();
             throw redirect(303, '/convivio/sign-in');
         }
+    },
+    pay: async ({ request, locals: { supabase, getSession } }) => {
+        const session = await getSession();
+
+        const { fullName, email, phoneNumber, legalIdType, legalIdNumber } =
+            Object.fromEntries(await request.formData());
+
+        const paymentId = uuidv4();
+
+        const { data: paymentData, error: paymentError } = await supabase
+        .from('payments')
+        .insert({
+            id: paymentId,
+            client_id: session?.user.id
+        })
+        .select();
+
+        if (paymentError) {
+            console.log(paymentError)
+            return fail(500, {
+                success: false,
+                error: 'Hubo un error al crear el pago en nuestra base de datos. Por favor, inténtalo de nuevo.',
+            });
+        }
+
+        const paymentURL = await getPaymentURL({
+            publicKey: PUBLIC_WOMPI_COMMERCE_KEY,
+            amountInCents: ticket_value_in_cents,
+            reference: paymentId,
+            name: fullName,
+            email,
+            phone: phoneNumber,
+            legalIdType,
+            legalIdNumber,
+            integrityKey: WOMPI_INTEGRITY_KEY,
+            redirectURL: `${PUBLIC_BASE_URL}/convivio`,
+        });
+
+        throw redirect(303, paymentURL);
     },
 };
