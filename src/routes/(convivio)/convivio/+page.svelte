@@ -40,7 +40,7 @@
             <input type="hidden" name="phoneNumber" value="{profile.phone_number}" />
             <input type="hidden" name="legalIdNumber" value="{profile.id_number}" />
             <input type="hidden" name="legalIdType" value="{profile.id_type}" />
-            <button type="submit" class="button primary"><strong>Pagar con Wompi</strong></button>
+            <button type="submit" class="button wompi-button primary">Pagar con Wompi</button>
           </form>
     {:else}
         <p>
@@ -172,5 +172,12 @@
     small {
         display: block;
         margin-bottom: 0.5rem;
+    }
+
+    .wompi-button {
+        width: 70%;
+        height: 50px;
+        font-weight: bold;
+        font-size: larger;
     }
 </style>
