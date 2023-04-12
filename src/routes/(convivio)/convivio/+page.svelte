@@ -27,7 +27,16 @@
 <h1>Termina tu inscripción a Convivio</h1>
 
 <div class="form-widget">
-    {#if profile.registration_filled || form?.success}
+    {#if profile.payment_completed}
+        <h2>Hola, {profile.first_name}</h2>
+        <p>
+            ¡Ya terminaste tu inscripción! Gracias por animarte a vivir esta experiencia.
+            Pronto podrás ver más información acá. 
+            Si tienes alguna duda, puedes escribirnos a
+            <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
+            <a href="https://wa.me/573222926960">322 292 6960</a>.
+        </p>
+    {:else if profile.registration_filled || form?.success}
         <p>
             Hola {profile.first_name}, ya estás a un paso de terminar tu inscripción. Solo falta que pagues tu inscripción. 
             Si tienes alguna duda, puedes escribirnos a
