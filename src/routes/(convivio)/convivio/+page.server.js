@@ -2,10 +2,16 @@ import { fail, redirect } from '@sveltejs/kit';
 import {v4 as uuidv4} from 'uuid';
 import { getPaymentURL } from '$lib/concert-tickets/wompi';
 import { WOMPI_INTEGRITY_KEY } from '$env/static/private';
-import { PUBLIC_WOMPI_COMMERCE_KEY, PUBLIC_BASE_URL } from '$env/static/public';
+import { 
+    PUBLIC_WOMPI_COMMERCE_KEY, 
+    PUBLIC_BASE_URL,
+    PUBLIC_SUPABASE_EVENTS_MANAGER_URL,
+    PUBLIC_SUPABASE_EVENTS_MANAGER_ANON_KEY
+} from '$env/static/public';
+import { createClient } from '@supabase/supabase-js';
 
-const ticket_value = 200000;
-const ticket_value_in_cents = ticket_value * 100;
+const ticketValue = 200000;
+const ticketValueInCents = ticketValue * 100;
 
 export const load = async ({ locals: { supabase, getSession } }) => {
     const session = await getSession();
@@ -86,24 +92,32 @@ export const actions = {
             throw redirect(303, '/convivio/sign-in');
         }
     },
-    pay: async ({ request, locals: { supabase, getSession } }) => {
-        const session = await getSession();
+    pay: async ({ request}) => {
 
         const { fullName, email, phoneNumber, legalIdType, legalIdNumber } =
             Object.fromEntries(await request.formData());
 
-        const paymentId = uuidv4();
+        const eventId = 'CONVIVIO';
+        const paymentId = `${eventId}_${uuidv4()}`;
 
-        const { data: paymentData, error: paymentError } = await supabase
+        const supabaseForEventsManager = createClient(PUBLIC_SUPABASE_EVENTS_MANAGER_URL, PUBLIC_SUPABASE_EVENTS_MANAGER_ANON_KEY);
+
+        const { error: paymentError } = await supabaseForEventsManager
         .from('payments')
         .insert({
             id: paymentId,
-            client_id: session?.user.id
-        })
-        .select();
+            event_identifier: eventId,
+            client_info: {
+                full_name: fullName,
+                email: email,
+                phone_number: phoneNumber,
+                legal_id_type: legalIdType,
+                legal_id_number: legalIdNumber
+            }
+        });
 
         if (paymentError) {
-            console.log(paymentError)
+            console.log(paymentError);
             return fail(500, {
                 success: false,
                 error: 'Hubo un error al crear el pago en nuestra base de datos. Por favor, inténtalo de nuevo.',
@@ -112,7 +126,7 @@ export const actions = {
 
         const paymentURL = await getPaymentURL({
             publicKey: PUBLIC_WOMPI_COMMERCE_KEY,
-            amountInCents: ticket_value_in_cents,
+            amountInCents: ticketValueInCents,
             reference: paymentId,
             name: fullName,
             email,
