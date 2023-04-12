@@ -16,7 +16,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 
     const { data: profile } = await supabase
         .from('profiles')
-        .select(`first_name, last_name, email, phone_number, id_number, id_type, registration_filled`)
+        .select('first_name, last_name, email, phone_number, id_number, id_type, registration_filled')
         .eq('id', session.user.id)
         .single();
 
