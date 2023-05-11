@@ -60,6 +60,7 @@ export const actions = {
         });
 
         if (profileError) {
+            console.error(profileError);
             return fail(500, {
                 success: false,
                 error: 'Hubo un error al actualizar el perfil. Por favor, inténtalo de nuevo.',
@@ -74,6 +75,7 @@ export const actions = {
                 .upload(`${session?.user.id}.${suffix}`, authorization);
 
             if (authorizationError) {
+                console.error(authorizationError);
                 return fail(500, {
                     success: false,
                     error: 'Hubo un error al subir el archivo de autorización. Por favor, inténtalo de nuevo.',
@@ -117,7 +119,7 @@ export const actions = {
         });
 
         if (paymentError) {
-            console.log(paymentError);
+            console.error(paymentError);
             return fail(500, {
                 success: false,
                 error: 'Hubo un error al crear el pago en nuestra base de datos. Por favor, inténtalo de nuevo.',
