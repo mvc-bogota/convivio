@@ -41,7 +41,7 @@
             <p>
                 Si tienes alguna duda, puedes escribirnos a
                 <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
-                <a href="https://wa.me/573222926960">322 292 6960</a>.
+                <a href="https://wa.me/573112712169">311 271 2169</a>.
             </p>
         </div>
     {:else}
@@ -51,7 +51,7 @@
                 Hola {profile.first_name}, ya estás a un paso de terminar tu inscripción. Solo falta que pagues tu inscripción. 
                 Si tienes alguna duda, puedes escribirnos a
                 <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
-                <a href="https://wa.me/573222926960">322 292 6960</a>.
+                <a href="https://wa.me/573112712169">311 271 2169</a>.
             </p>
             <form  method="POST" class= "flex flex-center" action="?/pay">
                 <input type="hidden" name="email" value="{profile.email}" />
@@ -66,7 +66,7 @@
                 Hola {profile.first_name}, ya casi terminas tu inscripción. Solo falta que llenes la siguiente
                 información y pagues tu inscripción. Si tienes alguna duda, puedes escribirnos a
                 <a href="mailto:convivio@sanjose.edu.co">convivio@sanjose.edu.co</a> o por Whatsapp a
-                <a href="https://wa.me/573222926960">322 292 6960</a>.
+                <a href="https://wa.me/573112712169">311 271 2169</a>.
             </p>
             <form class="flow" method="post" action="?/update" use:enhance={handleSubmit}>
                 <div>
