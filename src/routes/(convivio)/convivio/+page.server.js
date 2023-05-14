@@ -22,7 +22,7 @@ export const load = async ({ locals: { supabase, getSession } }) => {
 
     const { data: profile } = await supabase
         .from('profiles')
-        .select('first_name, last_name, email, phone_number, id_number, id_type, registration_filled, payment_completed')
+        .select('first_name, last_name, email, phone_number, id_number, id_type, registration_filled, payment_completed, payment_discount')
         .eq('id', session.user.id)
         .single();
 
@@ -96,7 +96,7 @@ export const actions = {
     },
     pay: async ({ request}) => {
 
-        const { fullName, email, phoneNumber, legalIdType, legalIdNumber } =
+        const { fullName, email, phoneNumber, legalIdType, legalIdNumber, discount } =
             Object.fromEntries(await request.formData());
 
         const eventId = 'CONVIVIO';
@@ -128,7 +128,7 @@ export const actions = {
 
         const paymentURL = await getPaymentURL({
             publicKey: PUBLIC_WOMPI_COMMERCE_KEY,
-            amountInCents: ticketValueInCents,
+            amountInCents: ticketValueInCents - discount,
             reference: paymentId,
             name: fullName,
             email,
