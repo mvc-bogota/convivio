@@ -1,5 +1,12 @@
 import { fail, redirect } from '@sveltejs/kit';
 
+function reformatName(name) {
+    let nameInLowerCase = name.toLowerCase();
+    let capitalizedName = nameInLowerCase.replace(/(^|\s)\S/g, (letter) => letter.toUpperCase());
+
+    return capitalizedName;
+}
+
 export async function load({ locals: { getSession } }) {
     const session = await getSession();
 
@@ -12,12 +19,15 @@ export async function load({ locals: { getSession } }) {
 export const actions = {
     default: async ({ request, url, locals: { supabase } }) => {
         const formData = await request.formData();
-        const firstName = formData.get('firstName');
-        const lastName = formData.get('lastName');
+        let firstName = formData.get('firstName');
+        let lastName = formData.get('lastName');
         const email = formData.get('email');
         const phoneNumber = formData.get('phone');
         const idType = formData.get('idType');
         const idNumber = formData.get('idNumber');
+
+        firstName = reformatName(firstName);
+        lastName = reformatName(lastName);
 
         const { error } = await supabase.auth.signInWithOtp({
             email,

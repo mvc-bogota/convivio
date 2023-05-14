@@ -60,6 +60,7 @@
                 <select id="idType" name="idType" required>
                     <option value="CC">Cédula de ciudadanía</option>
                     <option value="TI">Tarjeta de identidad</option>
+                    <option value="RC">Registro civil</option>
                     <option value="CE">Cédula de extranjería</option>
                 </select>
                 <label for="idNumber">Número de identificación:</label>
