@@ -96,7 +96,7 @@ export const actions = {
     },
     pay: async ({ request}) => {
 
-        const { fullName, email, phoneNumber, legalIdType, legalIdNumber, discount } =
+        let { fullName, email, phoneNumber, legalIdType, legalIdNumber, discount } =
             Object.fromEntries(await request.formData());
 
         const eventId = 'CONVIVIO';
@@ -126,9 +126,14 @@ export const actions = {
             });
         }
 
+        if (discount === null) {
+            discount = 0;
+        }
+        const discountInCents = discount * 100;
+
         const paymentURL = await getPaymentURL({
             publicKey: PUBLIC_WOMPI_COMMERCE_KEY,
-            amountInCents: ticketValueInCents - discount,
+            amountInCents: ticketValueInCents - discountInCents,
             reference: paymentId,
             name: fullName,
             email,
