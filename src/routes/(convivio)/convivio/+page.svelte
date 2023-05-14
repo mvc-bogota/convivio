@@ -128,6 +128,10 @@
                     <small><a href="https://drive.google.com/file/d/1ZrN5K6Vi5lrM__5S2VSMZqiJlLuR6bBI/view" target="_blank" rel="noreferrer noopener">
                         Permiso menores de edad Convivio
                     </a></small>
+                    <small>Solo se permite mandar 1 archivo de varias páginas y este no puede ser demasiado pesado. Por eso, te sugerimeos usar la siguiente herramienta para unir PDFs o comprimirlos</small>
+                    <small><a href="https://www.ilovepdf.com/es" target="_blank" rel="noreferrer noopener">
+                        I Love PDF
+                    </a></small>
                     <div>
                         <label for="authorization">Permiso firmado por el padre, madre o acudiente</label>
                         <input type="file" name="authorization" id="authorization" required />
