@@ -56,6 +56,14 @@
             </div>
 
             <div>
+                <label for="sex">Sexo</label>
+                <select id="sex" name="sex" required>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                </select>
+            </div>
+
+            <div>
                 <label for="idType">Tipo de identificación:</label>
                 <select id="idType" name="idType" required>
                     <option value="CC">Cédula de ciudadanía</option>

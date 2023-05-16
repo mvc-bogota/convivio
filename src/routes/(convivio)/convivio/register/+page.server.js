@@ -21,6 +21,7 @@ export const actions = {
         const formData = await request.formData();
         let firstName = formData.get('firstName');
         let lastName = formData.get('lastName');
+        const sex = formData.get('sex');
         const email = formData.get('email');
         const phoneNumber = formData.get('phone');
         const idType = formData.get('idType');
@@ -35,6 +36,7 @@ export const actions = {
                 data: {
                     first_name: firstName,
                     last_name: lastName,
+                    sex: sex,
                     phone_number: phoneNumber,
                     id_type: idType,
                     id_number: idNumber,
@@ -50,6 +52,7 @@ export const actions = {
                 error: error.message,
                 firstName,
                 lastName,
+                sex,
                 email,
                 phoneNumber,
                 idType,
