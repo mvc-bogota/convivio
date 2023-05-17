@@ -25,7 +25,7 @@
 </script>
 
 <div class="form-widget">
-    {#if profile.payment_completed}
+    {#if profile.payment_completed && profile.registration_filled}
         <h1>Hola, {profile.first_name}</h1>
         <div>
             <p>
